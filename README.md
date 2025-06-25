@@ -1,5 +1,7 @@
 # The Exceptionator
 
+![The Exceptionator](logo.png)
+
 Roslyn analyzers for improving exception handling in C# code.
 
 This project includes a set of diagnostics aimed at encouraging better exception practices. Each rule detects common pitfalls and helps improve reliability, maintainability, and clarity of your exception logic.
