@@ -73,19 +73,8 @@ namespace ExceptionAnalyzer
             context.RegisterSyntaxNodeAction(AnalyzeTryBlock, SyntaxKind.TryStatement);
         }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Minor Code Smell", "S2325:Methods and properties that don't access instance data should be static", Justification = "<Pending>")]
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Minor Code Smell", "S2486:Generic exceptions should not be ignored", Justification = "<Pending>")]
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Major Code Smell", "S108:Nested blocks of code should not be left empty", Justification = "<Pending>")]
         private void AnalyzeTryBlock(SyntaxNodeAnalysisContext context)
         {
-            try
-            {
-                int i = 0;
-            }
-            catch (System.Exception)
-            {
-
-            }
             var tryStatement = (TryStatementSyntax)context.Node;
 
             if (tryStatement.Block == null || tryStatement.Block.Statements.Count != 0)
