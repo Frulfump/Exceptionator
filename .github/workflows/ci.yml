@@ -28,4 +28,4 @@ jobs:
     - uses: actions/upload-artifact@v4
       with:
         name: TheExceptionator.vsix
-        path: src\ExceptionAnalyzer.Vsix\bin\Release\ExceptionAnalyzer.Vsix.vsix
+        path: src\ExceptionAnalyzer.Vsix\bin\Release\net472\ExceptionAnalyzer.Vsix.vsix
