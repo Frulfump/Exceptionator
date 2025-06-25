@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36202.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExceptionAnalyzer", "src\ExceptionAnalyzer\ExceptionAnalyzer.csproj", "{9215975E-B131-8EC8-DFE1-8D39F90002FB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExceptionAnalyzer.Vsix", "src\ExceptionAnalyzer.Vsix\ExceptionAnalyzer.Vsix.csproj", "{BA524279-658D-B1C8-7C45-DC1E3E9A0B98}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9215975E-B131-8EC8-DFE1-8D39F90002FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9215975E-B131-8EC8-DFE1-8D39F90002FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9215975E-B131-8EC8-DFE1-8D39F90002FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9215975E-B131-8EC8-DFE1-8D39F90002FB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA524279-658D-B1C8-7C45-DC1E3E9A0B98}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA524279-658D-B1C8-7C45-DC1E3E9A0B98}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA524279-658D-B1C8-7C45-DC1E3E9A0B98}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA524279-658D-B1C8-7C45-DC1E3E9A0B98}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2AA6B390-1AF6-4A4D-8C87-8DCA60C67DFE}
+	EndGlobalSection
+EndGlobal
