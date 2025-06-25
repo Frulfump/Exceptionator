@@ -1,6 +1,8 @@
 # The Exceptionator
 
-![The Exceptionator](logo.png)
+<p align="center">
+  <img src="logo.png" alt="The Exceptionator" width="200">
+</p>
 
 Roslyn analyzers for improving exception handling in C# code.
 
