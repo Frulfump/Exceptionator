@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
   <Metadata>
-    <Identity Id="ExceptionAnalyzer.67e7ce1c-4435-4838-a016-a1182fed6116" Version="1.7" Language="en-US" Publisher="elmahio"/>
+    <Identity Id="ExceptionAnalyzer.67e7ce1c-4435-4838-a016-a1182fed6116" Version="1.0.0" Language="en-US" Publisher="elmahio"/>
     <DisplayName>The Exceptionator</DisplayName>
     <Description xml:space="preserve">Roslyn analyzers to catch common exception anti-patterns in .NET code.</Description>
     <Icon>icon.png</Icon>
