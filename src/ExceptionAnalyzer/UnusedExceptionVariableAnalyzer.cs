@@ -63,16 +63,6 @@ namespace ExceptionAnalyzer
 
         private void AnalyzeCatch(SyntaxNodeAnalysisContext context)
         {
-            try
-            {
-#pragma warning disable CS8597 // Thrown value may be null.
-                throw null;
-#pragma warning restore CS8597 // Thrown value may be null.
-            }
-            catch (Exception o)
-            {
-
-            }
             var catchClause = (CatchClauseSyntax)context.Node;
             var identifier = catchClause.Declaration?.Identifier;
             if (identifier == null || !identifier.HasValue || identifier.Value.ValueText == "")
