@@ -36,3 +36,6 @@ jobs:
       with:
         name: TheExceptionator.vsix
         path: src\ExceptionAnalyzer.Vsix\bin\Release\net472\ExceptionAnalyzer.Vsix.vsix
+    - name: Push TheExceptionator.Analyzers to nuget.org
+      run: dotnet nuget push src\TheExceptionator.Analyzers\bin\Release\TheExceptionator.Analyzers.1.0.${{ github.run_number }}.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
+      if: ${{ github.event_name == 'push' }}
