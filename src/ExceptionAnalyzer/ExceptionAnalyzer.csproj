@@ -2,6 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <IncludeBuildOutput>false</IncludeBuildOutput>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <IsPackable>true</IsPackable>
     <LangVersion>13.0</LangVersion>
     <Nullable>enable</Nullable>
@@ -35,6 +37,14 @@
     <PackageReference Include="Microsoft.CodeAnalysis.Analyzers" Version="2.9.8" />
     <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="3.3.1" />
     <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Workspaces" Version="3.3.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="$(OutputPath)\$(AssemblyName).dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="icon.png" Pack="true" PackagePath="\" />
   </ItemGroup>
 
 </Project>
