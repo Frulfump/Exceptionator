@@ -21,10 +21,17 @@ jobs:
         (Get-Content -Path src\ExceptionAnalyzer.Vsix\source.extension.vsixmanifest) |
           ForEach-Object {$_ -Replace '1.0.0', '1.0.${{ github.run_number }}'} |
             Set-Content -Path src\ExceptionAnalyzer.Vsix\source.extension.vsixmanifest
+        (Get-Content -Path src\ExceptionAnalyzer\ExceptionAnalyzer.csproj) |
+          ForEach-Object {$_ -Replace '1.0.0.0', '1.0.${{ github.run_number }}.0'} |
+            Set-Content -Path src\ExceptionAnalyzer\ExceptionAnalyzer.csproj
     - name: Restore
       run: nuget restore
     - name: Build
       run: msbuild /p:configuration=Release /p:DeployExtension=false /p:ZipPackageCompressionLevel=normal /v:m
+    - uses: actions/upload-artifact@v4
+      with:
+        name: CronExpressions.Analyzers.1.0.${{ github.run_number }}.nupkg
+        path: src\ExceptionAnalyzer\bin\Release\netstandard2.0\TheExceptionator.Analyzers.1.0.${{ github.run_number }}.nupkg
     - uses: actions/upload-artifact@v4
       with:
         name: TheExceptionator.vsix

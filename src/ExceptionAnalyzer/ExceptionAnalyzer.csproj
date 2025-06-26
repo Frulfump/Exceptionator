@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <IsPackable>false</IsPackable>
+    <IsPackable>true</IsPackable>
     <LangVersion>13.0</LangVersion>
     <Nullable>enable</Nullable>
 
@@ -10,15 +10,31 @@
     <PackageId>*$(MSBuildProjectFile)*</PackageId>
   </PropertyGroup>
 
+  <PropertyGroup>
+    <PackageId>TheExceptionator.Analyzers</PackageId>
+    <PackageVersion>1.0.0.0</PackageVersion>
+    <Authors>elmah.io</Authors>
+    <AssemblyName>TheExceptionator.Analyzers</AssemblyName>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+    <PackageProjectUrl>https://marketplace.visualstudio.com/items?itemName=elmahio.theexceptionator</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/elmahio/Exceptionator</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageIcon>icon.png</PackageIcon>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <Description>Roslyn analyzers to catch common exception anti-patterns in .NET code.</Description>
+    <PackageTags>analyzer, analyzers, roslyn, exception, exceptions</PackageTags>
+    <NoPackageAnalysis>true</NoPackageAnalysis>
+    <GenerateAssemblyTitleAttribute>false</GenerateAssemblyTitleAttribute>
+    <GenerateAssemblyDescriptionAttribute>false</GenerateAssemblyDescriptionAttribute>
+    <GenerateAssemblyCopyrightAttribute>false</GenerateAssemblyCopyrightAttribute>
+    <DevelopmentDependency>true</DevelopmentDependency>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+  </PropertyGroup>
+
   <ItemGroup>
     <PackageReference Include="Microsoft.CodeAnalysis.Analyzers" Version="2.9.8" />
     <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="3.3.1" />
     <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Workspaces" Version="3.3.1" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Update="Resources.Designer.cs" DesignTime="True" AutoGen="True" DependentUpon="Resources.resx" />
-    <EmbeddedResource Update="Resources.resx" Generator="ResXFileCodeGenerator" LastGenOutput="Resources.Designer.cs" />
   </ItemGroup>
 
 </Project>
