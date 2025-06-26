@@ -289,3 +289,7 @@ try { ... } catch { }
 ```csharp
 try { ... } catch { /* intentionally blank */ }
 ```
+
+---
+
+Sponsored by [elmah.io](https://elmah.io).
