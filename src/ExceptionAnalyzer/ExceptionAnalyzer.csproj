@@ -15,6 +15,7 @@
   <PropertyGroup>
     <PackageId>TheExceptionator.Analyzers</PackageId>
     <PackageVersion>1.0.0.0</PackageVersion>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
     <Authors>elmah.io</Authors>
     <AssemblyName>TheExceptionator.Analyzers</AssemblyName>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
