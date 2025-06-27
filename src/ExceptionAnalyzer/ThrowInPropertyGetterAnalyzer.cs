@@ -8,35 +8,8 @@ using System.Linq;
 namespace ExceptionAnalyzer
 {
     /// <summary>
-    /// Analyzer EX012: Detects exceptions thrown from property getters.
-    ///
-    /// Throwing exceptions from property getters is discouraged because property accessors are
-    /// expected to be fast and side-effect free. Exceptions should be thrown from methods instead,
-    /// where it's semantically clearer that the call might fail.
-    ///
-    /// <para>⚠️ Triggers on:</para>
-    /// <code>
-    /// public string Name
-    /// {
-    ///     get { throw new InvalidOperationException("Invalid"); }
-    /// }
-    ///
-    /// public int Age => throw new Exception("Fail");
-    /// </code>
-    ///
-    /// <para>✅ Preferred usage:</para>
-    /// <code>
-    /// public string Name
-    /// {
-    ///     get { return TryGetName(); }
-    /// }
-    ///
-    /// private string TryGetName()
-    /// {
-    ///     if (invalid) throw new InvalidOperationException("Invalid");
-    ///     return "Thomas";
-    /// }
-    /// </code>
+    /// EX012: Don't throw exceptions from property getters
+    /// Discourages throwing exceptions directly from property getters.
     /// </summary>
     [DiagnosticAnalyzer(LanguageNames.CSharp)]
     public class ThrowInPropertyGetterAnalyzer : DiagnosticAnalyzer

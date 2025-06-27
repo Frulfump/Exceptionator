@@ -8,30 +8,8 @@ using System.Linq;
 namespace ExceptionAnalyzer
 {
     /// <summary>
-    /// Analyzer EX003: Detects rethrown exceptions inside a catch block that fail to include the caught exception as an inner exception.
-    ///
-    /// When wrapping an exception, it’s best practice to include the original exception as the <c>innerException</c> argument
-    /// to preserve the original call stack and diagnostic context.
-    ///
-    /// <para>⚠️ Triggers on:</para>
-    /// <code>
-    /// catch (Exception ex)
-    /// {
-    ///     throw new CustomException("Something went wrong");
-    /// }
-    /// </code>
-    ///
-    /// <para>✅ Preferred usage:</para>
-    /// <code>
-    /// catch (Exception ex)
-    /// {
-    ///     throw new CustomException("Something went wrong", ex);
-    /// }
-    /// </code>
-    ///
-    /// <para>Note:</para>
-    /// This analyzer matches the identifier used in the catch clause and ensures it’s passed as an argument
-    /// to the new exception constructor.
+    /// EX003: Missing inner exception
+    /// Ensures that newly thrown exceptions inside catch blocks include the original exception as inner exception.
     /// </summary>
     [DiagnosticAnalyzer(LanguageNames.CSharp)]
     public class MissingInnerExceptionAnalyzer : DiagnosticAnalyzer

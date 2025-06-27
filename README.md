@@ -288,6 +288,102 @@ try { ... } catch { }
 try { ... } catch { /* intentionally blank */ }
 ```
 
+### EX020: Exception class should be public
+
+Ensures that exception types are declared `public` to be visible when thrown or caught across assemblies.
+
+❌ Bad:
+```csharp
+class CustomException : Exception
+{
+}
+```
+
+✅ Good:
+```csharp
+public class CustomException : Exception
+{
+}
+```
+
+### EX021: Missing expected constructors on custom exception
+
+Ensures that custom exceptions implement the expected constructors with message and inner exception parameters.
+
+❌ Bad:
+```csharp
+public class MyCustomException : Exception
+{
+}
+```
+
+✅ Good:
+```csharp
+public class MyCustomException : Exception
+{
+    public MyCustomException(string message) : base(message) { }
+
+    public MyCustomException(string message, Exception innerException)
+        : base(message, innerException) { }
+}
+```
+
+### EX022: Exception constructors must call base
+
+Ensures that exception constructors pass their parameters (message, innerException) to the base constructor.
+
+❌ Bad:
+```csharp
+public MyCustomException(string message) { }
+public MyCustomException(string message, Exception inner) { }
+```
+
+✅ Good:
+```csharp
+public MyCustomException(string message) : base(message) { }
+public MyCustomException(string message, Exception inner) : base(message, inner) { }
+```
+
+### EX023: Exception class name must end with 'Exception'
+
+Ensures consistency and clarity by requiring exception classes to follow the naming convention of ending with 'Exception'.
+
+❌ Bad:
+```csharp
+public class MyCustomError : Exception
+{
+}
+```
+
+✅ Good:
+```csharp
+public class MyCustomException : Exception
+{
+}
+```
+
+### EX024: Avoid catching fatal exceptions like StackOverflowException or ExecutionEngineException
+
+Flags catch blocks that handle fatal exceptions which should not be caught or are uncatchable.
+
+❌ Bad:
+```csharp
+try { ... }
+catch (StackOverflowException ex) { Log(ex); }
+```
+
+✅ Good:
+```csharp
+try { ... }
+catch (Exception ex) { Log(ex); }
+```
+
+## Acknowledgments
+
+* [Davide Bellone](https://github.com/bellons91)
+* [Andrew Lock](https://github.com/andrewlock)
+* [Marc Jacobi](https://github.com/obiwanjacobi)
+
 ---
 
 Sponsored by [elmah.io](https://elmah.io).

@@ -7,35 +7,8 @@ using System.Collections.Immutable;
 namespace ExceptionAnalyzer
 {
     /// <summary>
-    /// Analyzer EX013: Detects throw statements that throw <c>ex.InnerException</c>
-    /// directly from within a catch block.
-    ///
-    /// Throwing <c>ex.InnerException</c> will lose the current stack trace and may result
-    /// in a null reference exception if the inner exception is null. It’s better to either
-    /// rethrow the original exception using <c>throw;</c> or wrap the inner exception in a new one.
-    ///
-    /// <para>⚠️ Triggers on:</para>
-    /// <code>
-    /// catch (Exception ex)
-    /// {
-    ///     throw ex.InnerException;
-    /// }
-    /// </code>
-    ///
-    /// <para>✅ Preferred usage:</para>
-    /// <code>
-    /// catch (Exception ex)
-    /// {
-    ///     throw;
-    /// }
-    /// </code>
-    /// or
-    /// <code>
-    /// catch (Exception ex)
-    /// {
-    ///     throw new CustomException("Something went wrong", ex.InnerException);
-    /// }
-    /// </code>
+    /// EX013: Avoid throwing ex.InnerException
+    /// Detects when ex.InnerException is thrown directly, which may cause null reference issues and loses the stack trace.
     /// </summary>
     [DiagnosticAnalyzer(LanguageNames.CSharp)]
     public class ThrowInnerExceptionAnalyzer : DiagnosticAnalyzer

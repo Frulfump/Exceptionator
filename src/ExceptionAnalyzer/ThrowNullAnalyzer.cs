@@ -7,18 +7,8 @@ using System.Collections.Immutable;
 namespace ExceptionAnalyzer
 {
     /// <summary>
-    /// EX016: Detects and warns against the use of <c>throw null;</c>, which results in a <see cref="System.NullReferenceException"/>.
-    ///
-    /// ❌ Triggers on:
-    /// <code>
-    /// throw null;
-    /// </code>
-    ///
-    /// ✅ Allowed examples:
-    /// <code>
-    /// throw new InvalidOperationException();
-    /// throw; // re-throws the current exception
-    /// </code>
+    /// EX016: Avoid empty catch when throwing new exception without message
+    /// Detects cases where a new exception is thrown in a catch block without message or inner exception.
     /// </summary>
     [DiagnosticAnalyzer(LanguageNames.CSharp)]
     public class ThrowNullAnalyzer : DiagnosticAnalyzer

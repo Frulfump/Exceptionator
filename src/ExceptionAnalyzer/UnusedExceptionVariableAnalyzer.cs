@@ -8,35 +8,8 @@ using System.Linq;
 namespace ExceptionAnalyzer
 {
     /// <summary>
-    /// Analyzer EX005: Identifies unused exception variables in catch blocks.
-    ///
-    /// Catching an exception with a named variable (e.g. `catch (Exception ex)`) without ever using
-    /// that variable leads to clutter and reduces code clarity. If the variable is not used,
-    /// it should be omitted (i.e. `catch (Exception)` or simply `catch` if the type isn't important).
-    ///
-    /// <para>⚠️ Triggers on:</para>
-    /// <code>
-    /// try
-    /// {
-    ///     DoSomething();
-    /// }
-    /// catch (Exception ex)
-    /// {
-    ///     LogError(); // 'ex' is never used
-    /// }
-    /// </code>
-    ///
-    /// <para>✅ Preferred usage:</para>
-    /// <code>
-    /// try
-    /// {
-    ///     DoSomething();
-    /// }
-    /// catch (Exception)
-    /// {
-    ///     LogError();
-    /// }
-    /// </code>
+    /// EX005: Exception variable is unused
+    /// Detects catch variables that are never used.
     /// </summary>
     [DiagnosticAnalyzer(LanguageNames.CSharp)]
     public class UnusedExceptionVariableAnalyzer : DiagnosticAnalyzer

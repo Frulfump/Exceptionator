@@ -8,20 +8,8 @@ using System.Linq;
 namespace ExceptionAnalyzer
 {
     /// <summary>
-    /// Analyzer EX018: Detects when exception type filtering is done using `if (ex is Type)` inside a catch block.
-    /// Suggests using a catch with `when` filter or a specific exception type instead.
-    ///
-    /// ❌ Bad:
-    /// catch (Exception ex)
-    /// {
-    ///     if (ex is IOException) { ... }
-    /// }
-    ///
-    /// ✅ Good:
-    /// catch (IOException ex) { ... }
-    ///
-    /// ✅ Also good:
-    /// catch (Exception ex) when (ex is IOException) { ... }
+    /// EX018: NotImplementedException left in code
+    /// Detects <code>throw new NotImplementedException()</code> left in methods or properties.
     /// </summary>
     [DiagnosticAnalyzer(LanguageNames.CSharp)]
     public class FilterExceptionManuallyAnalyzer : DiagnosticAnalyzer

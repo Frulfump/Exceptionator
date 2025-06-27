@@ -8,35 +8,8 @@ using System.Linq;
 namespace ExceptionAnalyzer
 {
     /// <summary>
-    /// Analyzer EX011: Detects empty <c>catch</c> blocks without any statements or comments.
-    ///
-    /// Swallowing exceptions silently makes debugging and maintenance difficult. An empty <c>catch</c> block may hide errors unless there's a clear reason for ignoring them.
-    /// This analyzer raises a warning if a <c>catch</c> block is completely empty and lacks any explanatory comment.
-    ///
-    /// <para>⚠️ Triggers on:</para>
-    /// <code>
-    /// try
-    /// {
-    ///     DoSomething();
-    /// }
-    /// catch (Exception)
-    /// {
-    ///     // Nothing here
-    /// }
-    /// </code>
-    ///
-    /// <para>✅ Preferred usage:</para>
-    /// <code>
-    /// catch (Exception ex)
-    /// {
-    ///     LogError(ex);
-    /// }
-    ///
-    /// catch (Exception)
-    /// {
-    ///     // Intentionally ignored because XYZ
-    /// }
-    /// </code>
+    /// EX011: Empty catch block
+    /// Detects catch blocks that are completely empty without even a comment.
     /// </summary>
     [DiagnosticAnalyzer(LanguageNames.CSharp)]
     public class EmptyCatchBlockAnalyzer : DiagnosticAnalyzer

@@ -8,30 +8,8 @@ using System.Linq;
 namespace ExceptionAnalyzer
 {
     /// <summary>
-    /// Analyzer EX014: Detects logging of only <c>ex.Message</c> instead of the full exception object.
-    ///
-    /// Logging just the <c>Message</c> property on an exception often hides the stack trace and other useful context,
-    /// making debugging and monitoring harder. This analyzer flags logging statements that include <c>ex.Message</c>
-    /// but omit passing the full exception object.
-    ///
-    /// <para>⚠️ Triggers on:</para>
-    /// <code>
-    /// catch (Exception ex)
-    /// {
-    ///     logger.LogError("Something failed: " + ex.Message);
-    /// }
-    /// </code>
-    ///
-    /// <para>✅ Preferred usage:</para>
-    /// <code>
-    /// catch (Exception ex)
-    /// {
-    ///     logger.LogError(ex, "Something failed");
-    /// }
-    /// </code>
-    ///
-    /// <para>Note:</para>
-    /// This analyzer only triggers if <c>ex.Message</c> is logged without also including <c>ex</c> as a separate argument.
+    /// EX014: Avoid logging only ex.Message
+    /// Suggests logging the full exception instead of just the message to retain full context.
     /// </summary>
     [DiagnosticAnalyzer(LanguageNames.CSharp)]
     public class LogOnlyExceptionMessageAnalyzer : DiagnosticAnalyzer

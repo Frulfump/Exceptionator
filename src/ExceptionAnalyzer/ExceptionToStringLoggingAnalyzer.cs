@@ -8,28 +8,8 @@ using System.Linq;
 namespace ExceptionAnalyzer
 {
     /// <summary>
-    /// Analyzer EX015: Avoid logging exceptions using <c>ex.ToString()</c> or string interpolation that calls it implicitly.
-    ///
-    /// Logging the result of <c>ex.ToString()</c> instead of the exception object itself may lose important structured data.
-    /// Most logging frameworks (like Serilog, NLog, and Microsoft.Extensions.Logging) provide special handling for exception
-    /// objects passed as parameters. This analyzer detects scenarios where <c>ex.ToString()</c> or interpolated strings
-    /// with exceptions are used in logging.
-    ///
-    /// <para>⚠️ Triggers on:</para>
-    /// <code>
-    /// logger.LogError("An error occurred: " + ex.ToString());
-    /// logger.LogWarning($"Failed: {ex}");
-    /// logger.LogDebug("Error: {0}", ex.ToString());
-    /// </code>
-    ///
-    /// <para>✅ Preferred usage:</para>
-    /// <code>
-    /// logger.LogError(ex, "An error occurred");
-    /// logger.LogWarning(ex, "Failed");
-    /// </code>
-    ///
-    /// <para>Note:</para>
-    /// This analyzer only triggers when the exception variable is of type <c>System.Exception</c>.
+    /// EX015: Avoid logging ex.ToString()
+    /// Recommends logging the exception directly rather than calling ToString.
     /// </summary>
     [DiagnosticAnalyzer(LanguageNames.CSharp)]
     public class ExceptionToStringLoggingAnalyzer : DiagnosticAnalyzer

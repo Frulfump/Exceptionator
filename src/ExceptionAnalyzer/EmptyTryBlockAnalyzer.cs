@@ -9,46 +9,8 @@ using System.Threading.Tasks;
 namespace ExceptionAnalyzer
 {
     /// <summary>
-    /// Analyzer EX009: Detects empty <c>try</c> blocks that have one or more <c>catch</c> clauses.
-    ///
-    /// An empty <c>try</c> block with a <c>catch</c> may indicate a logic error, leftover debugging code, or unnecessary exception handling.
-    /// Unless there is a documented reason, such code should either contain meaningful logic or be removed.
-    ///
-    /// <para>⚠️ Triggers on:</para>
-    /// <code>
-    /// try
-    /// {
-    ///     // nothing here
-    /// }
-    /// catch (Exception ex)
-    /// {
-    ///     Log(ex);
-    /// }
-    /// </code>
-    ///
-    /// <para>✅ Preferred usage:</para>
-    /// <code>
-    /// try
-    /// {
-    ///     DoSomethingRisky();
-    /// }
-    /// catch (Exception ex)
-    /// {
-    ///     Log(ex);
-    /// }
-    /// </code>
-    ///
-    /// <para>✅ Also allowed with comment indicating intent:</para>
-    /// <code>
-    /// try
-    /// {
-    ///     // intentionally left empty – external system throws randomly
-    /// }
-    /// catch (Exception ex)
-    /// {
-    ///     Log(ex);
-    /// }
-    /// </code>
+    /// EX009: Empty try block with catch
+    /// Detects try blocks that are empty while having a catch.
     /// </summary>
     [DiagnosticAnalyzer(LanguageNames.CSharp)]
     public class EmptyTryBlockAnalyzer : DiagnosticAnalyzer

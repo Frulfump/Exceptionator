@@ -7,18 +7,8 @@ using System.Collections.Immutable;
 namespace ExceptionAnalyzer
 {
     /// <summary>
-    /// EX017 - Detects catch clauses with a 'when' filter that always evaluates to true.
-    ///
-    /// This is often redundant and suggests the filter can be removed:
-    ///
-    /// ❌ Bad:
-    /// catch (Exception ex) when (true)
-    /// catch (Exception ex) when (1 == 1)
-    ///
-    /// ✅ Good:
-    /// catch (Exception ex)
-    /// catch (Exception ex) when (ex is IOException)
-    /// catch (Exception ex) when (ShouldLog(ex))
+    /// EX017: Avoid when clauses that always evaluate to true
+    /// Detects <code>when</code> filters on catch blocks that always return true and are thus redundant.
     /// </summary>
     [DiagnosticAnalyzer(LanguageNames.CSharp)]
     public class CatchWhenAlwaysTrueAnalyzer : DiagnosticAnalyzer

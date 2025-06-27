@@ -7,14 +7,8 @@ using System.Collections.Immutable;
 namespace ExceptionAnalyzer
 {
     /// <summary>
-    /// Analyzer EX019: Detects `throw new NotImplementedException()` used in code.
-    /// Often left in place during development and forgotten before production.
-    ///
-    /// ❌ Bad:
-    /// public void MyMethod() => throw new NotImplementedException();
-    ///
-    /// ✅ Good:
-    /// public void MyMethod() => DoSomethingUseful();
+    /// EX019: Avoid general catch-all without any handling
+    /// Detects general catch blocks that don’t include logging, rethrow, or even a comment.
     /// </summary>
     [DiagnosticAnalyzer(LanguageNames.CSharp)]
     public class NotImplementedExceptionAnalyzer : DiagnosticAnalyzer

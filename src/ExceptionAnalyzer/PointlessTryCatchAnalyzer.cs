@@ -7,28 +7,8 @@ using Microsoft.CodeAnalysis.CSharp.Syntax;
 namespace ExceptionAnalyzer
 {
     /// <summary>
-    /// Analyzer EX007: Detects try/catch blocks that serve no meaningful purpose,
-    /// such as try blocks that only contain a <c>throw</c> or catch blocks that rethrow the exception without any added logic.
-    ///
-    /// These constructs add noise to the code and should be removed unless a specific handling intention is present.
-    ///
-    /// <para>⚠️ Triggers on:</para>
-    /// <code>
-    /// try
-    /// {
-    ///     throw;
-    /// }
-    /// catch
-    /// {
-    ///     throw;
-    /// }
-    /// </code>
-    ///
-    /// <para>✅ Preferred usage:</para>
-    /// Remove the try/catch block entirely if no additional processing, logging, or recovery is performed.
-    ///
-    /// <para>Note:</para>
-    /// The analyzer does not flag try/catch blocks that include logging, conditional logic, or alternative flow.
+    /// EX007: Pointless try/catch block
+    /// Detects try/catch blocks that don’t add meaningful handling logic.
     /// </summary>
     [DiagnosticAnalyzer(LanguageNames.CSharp)]
     public class PointlessTryCatchAnalyzer : DiagnosticAnalyzer

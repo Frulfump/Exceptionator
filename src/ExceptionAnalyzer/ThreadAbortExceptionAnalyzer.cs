@@ -8,42 +8,8 @@ using System.Linq;
 namespace ExceptionAnalyzer
 {
     /// <summary>
-    /// Analyzer EX008: Detects catch blocks that handle <c>ThreadAbortException</c>
-    /// without properly rethrowing the exception or calling <c>Thread.ResetAbort()</c>.
-    ///
-    /// Swallowing <c>ThreadAbortException</c> can lead to infinite loops or thread termination issues,
-    /// especially in scenarios involving <c>while</c> loops or long-running tasks.
-    ///
-    /// <para>⚠️ Triggers on:</para>
-    /// <code>
-    /// try
-    /// {
-    ///     while (true)
-    ///     {
-    ///         // ...
-    ///     }
-    /// }
-    /// catch (ThreadAbortException ex)
-    /// {
-    ///     // Swallowed without reset or rethrow
-    /// }
-    /// </code>
-    ///
-    /// <para>✅ Preferred usage:</para>
-    /// <code>
-    /// catch (ThreadAbortException ex)
-    /// {
-    ///     Thread.ResetAbort();
-    /// }
-    /// </code>
-    /// or
-    /// <code>
-    /// catch (ThreadAbortException)
-    /// {
-    ///     throw;
-    /// }
-    /// </code>
-    ///
+    /// EX008: ThreadAbortException must not be swallowed
+    /// Ensures ThreadAbortException is either rethrown or reset.
     /// The problem in this analyzer is described here: https://andrewlock.net/creating-an-analyzer-to-detect-infinite-loops-caused-by-threadabortexception/
     /// The post uses a while loop as an example, but the same issue can occur in catch blocks for ThreadAbortException.
     /// </summary>

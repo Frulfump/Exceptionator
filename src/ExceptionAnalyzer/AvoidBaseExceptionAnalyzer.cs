@@ -7,22 +7,8 @@ using System.Collections.Immutable;
 namespace ExceptionAnalyzer
 {
     /// <summary>
-    /// Analyzer EX002: Avoid throwing base exceptions like <c>System.Exception</c> or <c>System.SystemException</c>.
-    ///
-    /// Throwing these base exception types is discouraged, as they provide little contextual information.
-    /// More specific exception types should be used to convey intent and improve error handling.
-    ///
-    /// <para>⚠️ Triggers on:</para>
-    /// <code>
-    /// throw new System.Exception("Something went wrong");
-    /// throw new System.SystemException("Unexpected error");
-    /// </code>
-    ///
-    /// <para>✅ Preferred usage:</para>
-    /// <code>
-    /// throw new InvalidOperationException("Invalid state");
-    /// throw new ArgumentNullException(nameof(arg));
-    /// </code>
+    /// EX002: Avoid throwing base exceptions
+    /// Avoids throwing base exceptions like System.Exception or System.SystemException.
     /// </summary>
     [DiagnosticAnalyzer(LanguageNames.CSharp)]
     public class AvoidBaseExceptionAnalyzer : DiagnosticAnalyzer

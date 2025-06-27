@@ -8,41 +8,8 @@ using System.Linq;
 namespace ExceptionAnalyzer
 {
     /// <summary>
-    /// Analyzer EX010: Warns when <c>Task.WaitAll</c> is used without catching <c>AggregateException</c>.
-    ///
-    /// Using <c>Task.WaitAll</c> without handling <c>AggregateException</c> may result in unobserved exceptions and loss of error details.
-    /// It is generally safer to use <c>await Task.WhenAll</c> in asynchronous code or explicitly catch <c>AggregateException</c> in synchronous code.
-    ///
-    /// <para>⚠️ Triggers on:</para>
-    /// <code>
-    /// try
-    /// {
-    ///     Task.WaitAll(task1, task2);
-    /// }
-    /// catch (Exception ex)
-    /// {
-    ///     Console.WriteLine(ex); // Doesn't catch AggregateException properly
-    /// }
-    /// </code>
-    ///
-    /// <para>✅ Preferred usage (option 1 - async):</para>
-    /// <code>
-    /// await Task.WhenAll(task1, task2);
-    /// </code>
-    ///
-    /// <para>✅ Preferred usage (option 2 - sync):</para>
-    /// <code>
-    /// try
-    /// {
-    ///     Task.WaitAll(task1, task2);
-    /// }
-    /// catch (AggregateException ex)
-    /// {
-    ///     foreach (var inner in ex.InnerExceptions)
-    ///         Console.WriteLine(inner);
-    /// }
-    /// </code>
-    ///
+    /// EX010: Task.WaitAll should be wrapped with AggregateException catch
+    /// Ensures proper exception handling for Task.WaitAll by requiring AggregateException catch or using Task.WhenAll.
     /// <para>See also:</para>
     /// https://www.code4it.dev/csharptips/task-whenall-vs-task-waitall-error-handling/
     /// </summary>

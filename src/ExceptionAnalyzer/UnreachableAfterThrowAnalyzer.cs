@@ -7,31 +7,8 @@ using Microsoft.CodeAnalysis.CSharp.Syntax;
 namespace ExceptionAnalyzer
 {
     /// <summary>
-    /// Analyzer EX006: Detects unreachable code that appears after a throw statement.
-    ///
-    /// Once an exception is thrown, execution of the current block stops. Any code placed after
-    /// a `throw` within the same block is unreachable and should be removed or restructured,
-    /// as it represents dead code that will never be executed.
-    ///
-    /// <para>⚠️ Triggers on:</para>
-    /// <code>
-    /// void DoSomething()
-    /// {
-    ///     throw new Exception("Failed");
-    ///     Console.WriteLine("This will never run");
-    /// }
-    /// </code>
-    ///
-    /// <para>✅ Preferred usage:</para>
-    /// <code>
-    /// void DoSomething()
-    /// {
-    ///     if (error)
-    ///         throw new Exception("Failed");
-    ///
-    ///     Console.WriteLine("Safe to run");
-    /// }
-    /// </code>
+    /// EX006: Unreachable code after throw
+    /// Detects code written after a throw statement that will never execute.
     /// </summary>
     [DiagnosticAnalyzer(LanguageNames.CSharp)]
     public class UnreachableAfterThrowAnalyzer : DiagnosticAnalyzer

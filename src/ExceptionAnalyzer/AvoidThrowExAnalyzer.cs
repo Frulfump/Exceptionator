@@ -7,31 +7,8 @@ using Microsoft.CodeAnalysis.CSharp.Syntax;
 namespace ExceptionAnalyzer
 {
     /// <summary>
-    /// Analyzer EX004: Use <c>throw;</c> instead of <c>throw ex;</c> to preserve the original stack trace.
-    ///
-    /// When rethrowing an exception using <c>throw ex;</c>, the stack trace is reset, which makes debugging much harder.
-    /// The correct way to rethrow an exception is simply using <c>throw;</c>, which maintains the original call stack.
-    ///
-    /// <para>⚠️ Triggers on:</para>
-    /// <code>
-    /// catch (Exception ex)
-    /// {
-    ///     // Stack trace is lost
-    ///     throw ex;
-    /// }
-    /// </code>
-    ///
-    /// <para>✅ Preferred usage:</para>
-    /// <code>
-    /// catch (Exception ex)
-    /// {
-    ///     // Preserves stack trace
-    ///     throw;
-    /// }
-    /// </code>
-    ///
-    /// <para>Relevant best practice:</para>
-    /// https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca2200
+    /// EX004: Use 'throw;' instead of 'throw ex;'
+    /// Preserves the original stack trace when rethrowing exceptions.
     /// </summary>
     [DiagnosticAnalyzer(LanguageNames.CSharp)]
     public class AvoidThrowExAnalyzer : DiagnosticAnalyzer
