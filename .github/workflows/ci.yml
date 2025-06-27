@@ -19,10 +19,10 @@ jobs:
     - name: Update version
       run: |
         (Get-Content -Path src\ExceptionAnalyzer.Vsix\source.extension.vsixmanifest) |
-          ForEach-Object {$_ -Replace '1.0.0', '1.0.${{ github.run_number }}'} |
+          ForEach-Object {$_ -Replace '1.0.0', '1.1.${{ github.run_number }}'} |
             Set-Content -Path src\ExceptionAnalyzer.Vsix\source.extension.vsixmanifest
         (Get-Content -Path src\ExceptionAnalyzer\ExceptionAnalyzer.csproj) |
-          ForEach-Object {$_ -Replace '1.0.0.0', '1.0.${{ github.run_number }}.0'} |
+          ForEach-Object {$_ -Replace '1.0.0.0', '1.1.${{ github.run_number }}.0'} |
             Set-Content -Path src\ExceptionAnalyzer\ExceptionAnalyzer.csproj
     - name: Restore
       run: nuget restore
@@ -30,12 +30,12 @@ jobs:
       run: msbuild /p:configuration=Release /p:DeployExtension=false /p:ZipPackageCompressionLevel=normal /v:m
     - uses: actions/upload-artifact@v4
       with:
-        name: TheExceptionator.Analyzers.1.0.${{ github.run_number }}.nupkg
-        path: src\ExceptionAnalyzer\bin\Release\TheExceptionator.Analyzers.1.0.${{ github.run_number }}.nupkg
+        name: TheExceptionator.Analyzers.1.1.${{ github.run_number }}.nupkg
+        path: src\ExceptionAnalyzer\bin\Release\TheExceptionator.Analyzers.1.1.${{ github.run_number }}.nupkg
     - uses: actions/upload-artifact@v4
       with:
         name: TheExceptionator.vsix
         path: src\ExceptionAnalyzer.Vsix\bin\Release\net472\ExceptionAnalyzer.Vsix.vsix
     - name: Push TheExceptionator.Analyzers to nuget.org
-      run: dotnet nuget push src\ExceptionAnalyzer\bin\Release\TheExceptionator.Analyzers.1.0.${{ github.run_number }}.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
+      run: dotnet nuget push src\ExceptionAnalyzer\bin\Release\TheExceptionator.Analyzers.1.1.${{ github.run_number }}.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
       if: ${{ github.event_name == 'push' }}
